@@ -141,30 +141,41 @@ http://localhost:3000
 
 # 🚧 Challenges Faced & Solutions
 
-## 1. Row Level Security blocking inserts
+## 1. Implementing secure user-specific bookmarks (Row Level Security)
 
-**Problem:** Database rejected insert operations.
-**Solution:** Added proper RLS policies with `auth.uid() = user_id`.
+**Problem:** Without database-level security, users could potentially access other users’ bookmarks.
+**Solution:** 
+- Enabled Row Level Security (RLS) on the bookmarks table.
+- Created policies restricting select, insert, and delete operations using: auth.uid() = user_id
 
 ## 2. Google OAuth redirect mismatch
 
-**Problem:** Login failed due to incorrect callback URLs.
-**Solution:** Configured redirect URLs in Supabase and Google Cloud Console.
+**Problem:** Google login initially failed due to incorrect redirect URL configuration between Supabase and Google Cloud Console.
+**Solution:** 
+- Configured OAuth consent screen in Google Cloud Console.
+- Added Supabase callback URL (/auth/v1/callback) in Google OAuth settings.
+- Updated redirect URLs in Supabase authentication settings for both local and production environments.
 
 ## 3. Realtime updates not triggering
 
 **Problem:** Changes were not reflected across tabs.
-**Solution:** Enabled replication for bookmarks table in Supabase.
+**Solution:** 
+- Enabled replication for bookmarks table in Supabase.
+- Implemented realtime subscription using postgres_changes.
+- Cleaned up subscriptions using removeAllChannels() to prevent duplicate listeners.
 
 ## 4. TypeScript build error during deployment
 
 **Problem:** `useEffect` cleanup returned a Promise causing Vercel build failure.
-**Solution:** Wrapped cleanup function to return void.
+**Solution:** Wrapped cleanup function to return void instead of a Promise.
 
 ## 5. Tailwind styles not loading initially
 
 **Problem:** UI appeared unstyled.
-**Solution:** Ensured Tailwind directives were included and imported correctly.
+**Solution:** 
+- Verified Tailwind directives in globals.css.
+- Ensured global styles were imported in layout.tsx.
+- Restarted development server after configuration.
 
 ---
 
