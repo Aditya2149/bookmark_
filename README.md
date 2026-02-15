@@ -4,11 +4,11 @@ A simple full-stack bookmark manager that allows users to securely save and mana
 
 ## 🚀 Live Demo
 
-Live URL: [https://YOUR-VERCEL-URL.vercel.app](https://YOUR-VERCEL-URL.vercel.app)
+Live URL: [https://bookmark-sand.vercel.app/](https://bookmark-sand.vercel.app/)
 
 ## 📦 GitHub Repository
 
-[https://github.com/YOUR_USERNAME/YOUR_REPO](https://github.com/YOUR_USERNAME/YOUR_REPO)
+[https://github.com/Aditya2149/bookmark_](https://github.com/Aditya2149/bookmark_)
 
 ---
 
