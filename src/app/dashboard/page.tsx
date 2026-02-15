@@ -10,9 +10,13 @@ export default function Dashboard() {
   const [url, setUrl] = useState("")
 
   useEffect(() => {
-    getUser()
-    return () => supabase.removeAllChannels()
-  }, [])
+  getUser()
+
+  return () => {
+    supabase.removeAllChannels()
+  }
+}, [])
+
 
   async function getUser() {
     const { data } = await supabase.auth.getUser()
